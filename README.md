@@ -42,3 +42,20 @@ Aspiring Cybersecurity / SOC Analyst focused on risk management, incident respon
 
 ## 🎯 Career Focus
 Entry-level SOC Analyst | Cybersecurity Analyst | Information Security
+---
+
+## 🎓 Certifications
+
+- [Cisco Junior Cybersecurity Analyst](certifications/cisco-junior-cybersecurity-analyst/README.md)
+- Google Cybersecurity Professional Certificate
+- Google IT Support Professional Certificate
+- ISC2 Certified in Cybersecurity (CC)
+
+---
+
+## 💻 Practical Projects
+
+- [Secure Router Configuration Lab](projects/cisco-secure-router-lab/README.md)
+- [Blue Team – IOC Analysis & Threat Investigation](projects/blue-team-ioc-analysis/README.md)
+
+---
