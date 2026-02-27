@@ -31,3 +31,5 @@ Built foundational skills aligned with entry-level roles such as:
 - Junior Cybersecurity Analyst
 - SOC Analyst (entry-level)
 - IT Support / Security Support roles
+## Related Practical Projects
+- [Secure Router Configuration Lab](../../projects/cisco-secure-router-lab/README.md)
