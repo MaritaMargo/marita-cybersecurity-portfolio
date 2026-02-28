@@ -30,6 +30,12 @@ The mismatch confirmed that the file integrity was compromised.
 ## Security Insight
 Hash comparison ensures file integrity but does not guarantee authenticity if both the file and its hash reference are modified by an attacker.  
 In real-world environments, digital signatures are used to provide authenticity validation.
+## Detection Logic
+
+The integrity validation process is based on comparing a previously trusted SHA256 hash value with a newly calculated hash of the current file.
+
+If the values match → file integrity is preserved.  
+If the values differ → file tampering is detected.
 
 ---
 
