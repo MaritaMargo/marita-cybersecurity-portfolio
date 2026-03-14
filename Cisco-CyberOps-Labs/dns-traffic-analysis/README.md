@@ -29,11 +29,11 @@ Before capturing traffic in Wireshark, DNS queries were generated using the Wind
 
 The DNS cache was cleared to force the system to perform a new DNS lookup.
 
+![DNS Query Command](screenshots/08-dns-nslookup-command.png)
+
 
 ## Capturing DNS Traffic
 This ensured that a fresh DNS request would appear in the packet capture.
-
-![DNS Query Command](screenshots/08-dns-nslookup-command.png)
 
 
 These commands forced the system to perform a new DNS lookup.
@@ -94,6 +94,46 @@ This shows that Cisco uses **Akamai CDN infrastructure**.
 ![DNS Response](screenshots/07-dns-response-records.png)
 
 ---
+## Detailed DNS Packet Analysis
+
+To better understand the DNS protocol, one DNS query and one DNS response packet were examined in detail using Wireshark.
+
+### DNS Query Packet
+
+The DNS query packet contained the following key values:
+
+- **Query type:** AAAA (IPv6 address request)
+- **Questions:** 1
+- **Answers:** 0
+- **Flags:** Standard query
+
+The client requested the IPv6 address for:
+
+
+This query was sent from the client to the DNS server using **UDP port 53**.
+
+---
+
+### DNS Response Packet
+
+The DNS response packet returned multiple records.
+
+Key fields observed:
+
+- **Flags:** Standard query response (No error)
+- **Questions:** 1
+- **Answer RRs:** 6
+- **Authority RRs:** 0
+- **Additional RRs:** 0
+
+The response contained a chain of **CNAME records** before resolving to the final IPv6 address.
+
+Example chain observed:
+
+
+This behavior is typical for large web services that use **Content Delivery Networks (CDN)** such as Akamai.
+
+The DNS records also included **TTL values**, which define how long the response can be cached by the client.
 
 ## Security Perspective
 
