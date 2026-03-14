@@ -24,8 +24,16 @@ Wireshark was started and the active network interface was selected to capture t
 ---
 
 ## Capturing DNS Traffic
+## Generating DNS Traffic
 
-DNS traffic was generated using the following commands:
+Before capturing traffic in Wireshark, DNS queries were generated using the Windows Command Prompt.
+
+The DNS cache was cleared to force the system to perform a new DNS lookup.
+
+
+This ensured that a fresh DNS request would appear in the packet capture.
+
+![DNS Query Command](screenshots/08-dns-nslookup-command.png)
 
 
 These commands forced the system to perform a new DNS lookup.
