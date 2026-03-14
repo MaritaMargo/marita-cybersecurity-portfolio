@@ -44,8 +44,16 @@ These commands forced the system to perform a new DNS lookup.
 
 ## Filtering DNS Packets
 
-To isolate DNS traffic, the following display filter was applied:
+Initially the following Wireshark display filter was used:
 
+This filter shows DNS traffic transported over **UDP**, which is the most common transport protocol for DNS queries.
+
+However, Wireshark also provides a more general filter:
+
+The `dns` filter displays all DNS traffic regardless of the transport protocol.  
+This includes DNS over **UDP** as well as DNS over **TCP** (which can occur during zone transfers or large DNS responses).
+
+For this lab, `udp.port == 53` was sufficient because the captured traffic consisted of standard DNS queries and responses.
 
 This filter displays only DNS packets.
 
@@ -62,6 +70,17 @@ The DNS query packet contains multiple protocol layers:
 - User Datagram Protocol (UDP)
 - Domain Name System (DNS)
 
+- ### DNS Query Packet Fields
+
+| Field | Value | Description |
+|------|------|-------------|
+| Transaction ID | 0x0002 | Unique identifier for the DNS query |
+| Flags | 0x0100 | Standard query, recursion desired |
+| Questions | 1 | One DNS question |
+| Query Type | AAAA (28) | Request for IPv6 address |
+| Query Name | www.cisco.com | Requested domain |
+
+
 ![DNS Query Analysis](screenshots/04-dns-query-ethernet.png)
 
 ---
@@ -71,6 +90,16 @@ The DNS query packet contains multiple protocol layers:
 The Internet Protocol layer shows the source and destination IP addresses involved in the DNS communication.
 
 ![IP Analysis](screenshots/05-dns-ip-analysis.png)
+
+### IPv4 vs IPv6 Observation
+
+During the packet inspection, both IPv4 and IPv6 addresses were observed in the DNS responses.
+
+The DNS response included IPv6 records (**AAAA records**) as well as IPv4 addresses.
+
+IPv6 is increasingly used by modern web services because it provides a much larger address space and improved routing efficiency compared to IPv4.
+
+In this capture, the client requested an IPv6 address for `www.cisco.com`, which is typical for modern operating systems that prefer IPv6 connectivity when available.
 
 ---
 
@@ -169,6 +198,14 @@ Monitoring DNS activity is an important part of network security and threat dete
 
 ## Conclusion
 
-This lab demonstrated how DNS queries and responses can be captured and analyzed using Wireshark.  
-Understanding DNS traffic is essential for both network troubleshooting and cybersecurity analysis.
+## Conclusion
+
+This lab demonstrated how DNS queries and responses can be captured and analyzed using Wireshark.
+
+By inspecting packet structure and DNS record chains, it becomes possible to understand how domain names are resolved and how large services use CDN infrastructure.
+
+This exercise also highlights why **DNS monitoring is an important component of security monitoring systems** such as SIEM platforms (Splunk, ELK, Sentinel).
+
+DNS logs often provide early indicators of malicious activity, including suspicious domains, command-and-control communication, or data exfiltration attempts.
+
 
