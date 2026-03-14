@@ -166,8 +166,6 @@ The DNS records also included **TTL values**, which define how long the response
 
 ## Security Perspective
 
-## Security Perspective
-
 During the packet capture only legitimate and commonly used domains were observed, including:
 
 - google.com
@@ -195,8 +193,6 @@ However, from a network security monitoring perspective, encrypted DNS can reduc
 Monitoring DNS activity is an important part of network security and threat detection.
 
 ---
-
-## Conclusion
 
 ## Conclusion
 
