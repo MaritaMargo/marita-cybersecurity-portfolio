@@ -1,3 +1,0 @@
-git add .
-git commit -m "Added Wireshark TCP and UDP traffic analysis lab"
-git push
