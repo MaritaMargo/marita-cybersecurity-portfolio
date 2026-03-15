@@ -104,6 +104,22 @@ FTP uses **TCP port 21** for control communication. In this capture we can obser
 
 These commands are used to authenticate and establish data transfer channels.
 
+### Active vs Passive FTP Modes
+
+FTP can operate in two communication modes: **active mode** and **passive mode**.
+
+Active mode (PORT command):
+- the client opens a port
+- the server initiates the data connection back to the client
+- this mode can cause problems with NAT and firewalls
+
+Passive mode (PASV or EPSV command):
+- the server opens a port
+- the client connects to the server for data transfer
+- this mode works better with modern firewalls and NAT environments
+
+In modern networks **passive mode (PASV / EPSV)** is recommended because it avoids inbound connection issues on the client side.
+
 ![FTP Protocol](screenshots/06_ftp_protocol_commands.png)
 
 ### FTP Security Observation
@@ -128,6 +144,21 @@ For secure environments FTP should be replaced with:
 - **SFTP (SSH File Transfer Protocol)**
 - **FTPS (FTP over TLS)**
 
+- ### FTP Anonymous Login Observation
+
+During packet analysis the FTP command **USER anonymous** can be observed.
+
+Anonymous FTP allows users to access the FTP server without a personal account.  
+While sometimes used for public file distribution, it can also introduce security risks.
+
+Security considerations:
+
+- anonymous login may allow unauthorized access
+- attackers often scan for FTP servers with anonymous access
+- exposed FTP services may lead to data leakage
+
+In production environments anonymous FTP access should be carefully restricted or disabled.
+
 ---
 
 # Step 7 — Following TCP Stream
@@ -149,6 +180,30 @@ After data transmission is completed, the TCP session is closed using the **FIN 
 The FIN packet indicates that one side of the communication wants to terminate the connection.
 
 In Wireshark we can observe the TCP termination process where both sides acknowledge the session closure.
+
+### TCP Session Termination (4-Way FIN Process)
+
+TCP connections are closed using a **four-step termination process**.
+
+1. Client → FIN  
+   The client indicates it wants to close the connection.
+
+2. Server → ACK  
+   The server acknowledges the request.
+
+3. Server → FIN  
+   The server also indicates it wants to close the connection.
+
+4. Client → ACK  
+   The client confirms the connection termination.
+
+In Wireshark this sequence often appears as **[FIN, ACK] packets**.
+
+Understanding this process is important for security analysis because abnormal termination patterns such as **RST packets instead of FIN packets** may indicate:
+
+- session hijacking attempts
+- scanning activity
+- abnormal application behavior
 
 ![TCP FIN](screenshots/08_tcp_session_termination.png)
 
@@ -190,6 +245,23 @@ DNS traffic analysis is important because attackers may attempt:
 - DNS spoofing
 - DNS cache poisoning
 - malicious domain resolution
+- ### DNS Response Verification
+
+In the captured DNS response the domain **google.com** resolves to:
+
+192.178.25.14
+
+In real security investigations analysts must verify whether the returned IP address actually belongs to the expected organization.
+
+This verification helps detect attacks such as:
+
+- DNS spoofing
+- DNS cache poisoning
+- malicious redirection
+
+For example, legitimate Google IP ranges typically belong to the **AS15169 Google network**.
+
+Validating DNS responses against known IP ranges or threat intelligence sources is a common task for SOC analysts.
 
 ![UDP DNS](screenshots/09_udp_dns_packet_analysis.png)
 
@@ -242,3 +314,32 @@ When analyzing network captures, security analysts look for suspicious patterns 
 - port scanning behaviour
 
 Identifying these anomalies is essential for detecting potential intrusions or compromised systems.
+
+---
+
+## Additional Wireshark Analysis Techniques
+
+Professional network analysts often use additional Wireshark tools to better understand network traffic patterns.
+
+Some useful analysis features include:
+
+**Protocol Hierarchy**
+
+Statistics → Protocol Hierarchy
+
+This view helps identify which protocols dominate the captured traffic.  
+It provides a quick overview of protocol distribution within the capture.
+
+**Conversations**
+
+Statistics → Conversations
+
+This feature helps identify which hosts communicate the most within the network capture and can reveal suspicious communication patterns.
+
+**I/O Graph**
+
+Statistics → I/O Graph
+
+This tool visualizes traffic over time and can help analysts detect spikes in traffic, anomalies, or unusual bursts of network activity.
+
+These tools are commonly used by **SOC analysts and incident responders** when investigating network captures.
