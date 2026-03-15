@@ -150,7 +150,7 @@ While sometimes used for public file distribution, it can also introduce securit
 
 In production environments, anonymous FTP access should be carefully restricted or disabled.
 
-![FTP Protocol](screenshots/06-ftp-protocol-commands.png)
+![FTP Protocol](screenshots/06_ftp_protocol_commands.png)
 
 ---
 
@@ -246,7 +246,7 @@ This verification helps detect attacks such as:
 For example, legitimate Google IP ranges typically belong to the **AS15169 Google network**.
 Validating DNS responses against known IP ranges or threat intelligence sources is a common task for SOC analysts.
 
-![UDP DNS](./screenshots/09-udp-dns-packet-analysis.png)
+![UDP DNS Packet](screenshots/09_udp_dns_packet_analysis.png)
 
 ---
 
