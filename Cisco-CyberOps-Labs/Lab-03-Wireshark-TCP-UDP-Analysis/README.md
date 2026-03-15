@@ -194,7 +194,7 @@ Understanding this process is important for security analysis because abnormal t
 - scanning activity
 - abnormal application behavior
 
-![TCP FIN](screenshots/08_tcp_session_termination.png)
+![TCP FIN](./screenshots/08_tcp_session_termination.png)
 
 ---
 
@@ -246,7 +246,7 @@ This verification helps detect attacks such as:
 For example, legitimate Google IP ranges typically belong to the **AS15169 Google network**.
 Validating DNS responses against known IP ranges or threat intelligence sources is a common task for SOC analysts.
 
-![UDP DNS](screenshots/09-udp-dns-packet-analysis.png)
+![UDP DNS](./screenshots/09-udp-dns-packet-analysis.png)
 
 ---
 
