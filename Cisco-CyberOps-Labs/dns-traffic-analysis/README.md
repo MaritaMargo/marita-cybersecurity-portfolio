@@ -1,9 +1,10 @@
 # DNS Traffic Analysis with Wireshark
 
 This lab demonstrates how DNS traffic can be captured and analyzed using Wireshark.  
-The goal was to observe how domain names resolve to IP addresses and examine the structure of DNS packets.
+The goal was to observe how domain names resolve to IP addresses and examine
+the structure of DNS packets.
 
-Lab source: Cisco Networking Academy – Exploring DNS Traffic
+**Lab source:** Cisco Networking Academy – Exploring DNS Traffic
 
 ---
 
@@ -25,18 +26,22 @@ Wireshark was started and the active network interface was selected to capture t
 
 ## Generating DNS Traffic
 
-Before capturing traffic in Wireshark, DNS queries were generated using the Windows Command Prompt.
-
-The DNS cache was cleared to force the system to perform a new DNS lookup.
+Before capturing traffic in Wireshark, DNS queries were generated using
+the Windows Command Prompt. The DNS cache was cleared to force the system
+to perform a new DNS lookup.
+```cmd
+ipconfig /flushdns
+nslookup www.cisco.com
+```
 
 ![DNS Query Command](screenshots/08-dns-nslookup-command.png)
 
 
 ## Capturing DNS Traffic
-This ensured that a fresh DNS request would appear in the packet capture.
 
-
-These commands forced the system to perform a new DNS lookup.
+With the DNS cache cleared, Wireshark was started and traffic capture was initiated
+before running the nslookup command. This ensured that a fresh DNS request would
+appear in the packet capture.
 
 ![DNS Capture](screenshots/02-dns-capture.png)
 
@@ -45,28 +50,35 @@ These commands forced the system to perform a new DNS lookup.
 ## Filtering DNS Packets
 
 Initially the following Wireshark display filter was used:
+```
+udp.port == 53
+```
 
-This filter shows DNS traffic transported over **UDP**, which is the most common transport protocol for DNS queries.
+This filter shows DNS traffic transported over **UDP**, which is the most common
+transport protocol for DNS queries.
 
 However, Wireshark also provides a more general filter:
+```
+dns
+```
 
-The `dns` filter displays all DNS traffic regardless of the transport protocol.  
-This includes DNS over **UDP** as well as DNS over **TCP** (which can occur during zone transfers or large DNS responses).
+The `dns` filter displays all DNS traffic regardless of the transport protocol,
+including DNS over **UDP** as well as DNS over **TCP** (which can occur during
+zone transfers or large DNS responses).
 
-For this lab, `udp.port == 53` was sufficient because the captured traffic consisted of standard DNS queries and responses.
-
-This filter displays only DNS packets.
+For this lab, `udp.port == 53` was sufficient because the captured traffic
+consisted of standard DNS queries and responses.
 
 ![DNS Filter](screenshots/03-dns-filter-port53.png)
 
 ### Wireshark DNS Filters
 
 | Filter | What it shows | Use case |
-|------|------|------|
-| dns | All DNS traffic (UDP + TCP) | Recommended general DNS analysis filter |
-| udp.port == 53 | DNS over UDP only | Standard DNS queries |
-| dns.flags.response == 0 | DNS queries only | Investigating client requests |
-| dns.flags.rcode != 0 | DNS errors | Troubleshooting NXDOMAIN or failures |
+|--------|---------------|----------|
+| `dns` | All DNS traffic (UDP + TCP) | Recommended general DNS analysis filter |
+| `udp.port == 53` | DNS over UDP only | Standard DNS queries |
+| `dns.flags.response == 0` | DNS queries only | Investigating client requests |
+| `dns.flags.rcode != 0` | DNS errors | Troubleshooting NXDOMAIN or failures |
 
 ---
 
@@ -79,16 +91,16 @@ The DNS query packet contains multiple protocol layers:
 - User Datagram Protocol (UDP)
 - Domain Name System (DNS)
 
+
 ### DNS Query Packet Fields
 
 | Field | Value | Description |
-|------|------|-------------|
-| Transaction ID | 0x0002 | Unique identifier for the DNS query |
-| Query Name | www.cisco.com | Requested domain |
-| Query Type | AAAA (28) | Request for IPv6 address |
-| Flags | 0x0100 | Standard query, recursion desired |
-| Questions | 1 | One DNS question |
-
+|-------|-------|-------------|
+| Transaction ID | `0x0002` | Unique identifier for the DNS query |
+| Query Name | `www.cisco.com` | Requested domain |
+| Query Type | `AAAA (28)` | Request for IPv6 address |
+| Flags | `0x0100` | Standard query, recursion desired |
+| Questions | `1` | One DNS question |
 
 ![DNS Query Analysis](screenshots/04-dns-query-ethernet.png)
 
@@ -96,27 +108,31 @@ The DNS query packet contains multiple protocol layers:
 
 ## IP Layer Analysis
 
-The Internet Protocol layer shows the source and destination IP addresses involved in the DNS communication.
+The Internet Protocol layer shows the source and destination IP addresses
+involved in the DNS communication.
 
 ![IP Analysis](screenshots/05-dns-ip-analysis.png)
 
 ### IPv4 vs IPv6 Observation
 
-During the packet inspection, both IPv4 and IPv6 addresses were observed in the DNS responses.
+During the packet inspection, both IPv4 and IPv6 addresses were observed
+in the DNS responses. The DNS response included IPv6 records (**AAAA records**)
+as well as IPv4 addresses.
 
-The DNS response included IPv6 records (**AAAA records**) as well as IPv4 addresses.
+IPv6 is increasingly used by modern web services because it provides a much
+larger address space and improved routing efficiency compared to IPv4.
 
-IPv6 is increasingly used by modern web services because it provides a much larger address space and improved routing efficiency compared to IPv4.
-
-In this capture, the client requested an IPv6 address for `www.cisco.com`, which is typical for modern operating systems typically send both A and AAAA queries
-(DNS Happy Eyeballs behavior). If a valid AAAA response is received,
-IPv6 connectivity may be used; otherwise IPv4 is used as fallback.
-
+In this capture, the client requested an IPv6 address for `www.cisco.com`.
+Modern operating systems typically send both `A` and `AAAA` queries simultaneously
+(DNS Happy Eyeballs behavior). If a valid AAAA response is received, IPv6
+connectivity is used; otherwise IPv4 is used as fallback.
 ---
 
 ## UDP Transport Layer
 
-DNS queries are typically transmitted using **UDP port 53**.
+DNS queries are typically transmitted using **UDP port 53**. UDP is preferred
+over TCP for standard DNS queries because it is connectionless and faster —
+the small size of DNS packets makes the reliability overhead of TCP unnecessary.
 
 ![UDP Layer](screenshots/06-dns-udp-port53.png)
 
@@ -126,39 +142,41 @@ DNS queries are typically transmitted using **UDP port 53**.
 
 The DNS response reveals a chain of **CNAME records** before resolving to the final address.
 
-Example resolution chain:
+Example resolution chain observed in this capture:
+```
 www.cisco.com
-→ CNAME → www.cisco.com.akadns.net
-→ CNAME → wwwds.cisco.com.edgekey.net
-→ CNAME → wwwds.cisco.com.edgekey.net.globalredir.akadns.net
-→ CNAME → e2867.dsca.akamaiedge.net
-→ AAAA → 2a02:26f0:e2:784::b33
-→ AAAA → 2a02:26f0:e2:788::b33
-→ A → 23.32.26.4
+  → CNAME → www.cisco.com.akadns.net
+  → CNAME → wwds.cisco.com.edgekey.net
+  → CNAME → wwwds.cisco.com.edgekey.net.globalredir.akadns.net
+  → CNAME → e2867.dsca.akamaiedge.net
+  → AAAA  → 2a02:26f0:e2:784::b33
+  → AAAA  → 2a02:26f0:e2:788::b33
+  → A     → 23.32.26.4
+```
 
-This multi-level CNAME chain is typical for Akamai CDN infrastructure,
-which dynamically distributes traffic across edge servers.
-
-This shows that Cisco uses **Akamai CDN infrastructure**.
+The final records may vary depending on resolver, time, and geographic location.
+This multi-level CNAME chain is typical of **Akamai CDN infrastructure**, which
+dynamically routes traffic to the nearest edge server for load balancing and
+geographic optimization — confirming that Cisco relies on Akamai for content delivery.
 
 ![DNS Response](screenshots/07-dns-response-records.png)
 
 ---
 ## Detailed DNS Packet Analysis
 
-To better understand the DNS protocol, one DNS query and one DNS response packet were examined in detail using Wireshark.
+To better understand the DNS protocol, one DNS query and one DNS response
+packet were examined in detail using Wireshark.
 
 ### DNS Query Packet
 
-The DNS query packet contained the following key values:
+The DNS query packet for `www.cisco.com` contained the following key values:
 
-- **Query type:** AAAA (IPv6 address request)
-- **Questions:** 1
-- **Answers:** 0
-- **Flags:** Standard query
-
-The client requested the IPv6 address for:
-
+- **Transaction ID:** `0x0002`
+- **Query Type:** `AAAA (28)` — IPv6 address request
+- **Query Name:** `www.cisco.com`
+- **Questions:** `1`
+- **Answers:** `0`
+- **Flags:** `0x0100` — Standard query, recursion desired (RD=1)
 
 This query was sent from the client to the DNS server using **UDP port 53**.
 
@@ -166,69 +184,68 @@ This query was sent from the client to the DNS server using **UDP port 53**.
 
 ### DNS Response Packet
 
-The DNS response packet returned multiple records.
+The DNS response packet returned multiple records with the following key fields:
 
-Key fields observed:
+- **Flags:** `0x8180` — Standard query response, No error (RCODE=0)
+- **Questions:** `1`
+- **Answer RRs:** `6`
+- **Authority RRs:** `0`
+- **Additional RRs:** `0` — no glue records were included; all returned
+information was contained within the Answer section
 
-- **Flags:** Standard query response (No error)
-- **Questions:** 1
-- **Answer count:** 6 resource records
-- **Authority RRs:** 0
-- **Additional RRs:** 0
+The six Answer RRs consisted of a chain of **CNAME records** resolving to the
+final IPv6 address, as documented in the DNS Response Records section above.
 
-The response contained a chain of **CNAME records** before resolving to the final IPv6 address.
-
-Example chain observed:
-
-
-This behavior is typical for large web services that use **Content Delivery Networks (CDN)** such as Akamai.
-
-The DNS records also included **TTL values**, which define how long the response can be cached by the client.
+The response also included **TTL values** for each record, defining how long
+each entry can be cached by the client. Notably, the edge server AAAA records
+carried a TTL of only 20 seconds, allowing Akamai to dynamically redirect
+traffic across edge nodes.
 
 ## Security Perspective
 
-During the packet capture only legitimate and commonly used domains were observed, including:
+During the packet capture, only legitimate and commonly used domains were observed,
+including google.com, cisco.com, and brave.com. No suspicious domain patterns were
+identified — such as long randomized subdomains or unusually high query volumes —
+which could otherwise indicate techniques like **DNS tunneling** or data exfiltration.
+The observed traffic appears to represent normal client behavior driven by standard
+web browsing and background software update activity.
 
-- google.com
-- cisco.com
-- brave.com
+From a defensive standpoint, Wireshark can be used to detect abnormal DNS behavior
+by analyzing query frequency, response codes, and domain entropy.
+Tools such as **Wireshark Statistics → DNS** and **Expert Information** are
+particularly useful for surfacing:
 
-No suspicious domain patterns were identified (such as long random subdomains or unusual query structures), which could otherwise indicate techniques like **DNS tunneling** or data exfiltration.
+- unusually high DNS query rates, which may indicate beaconing or DGA activity
+- repeated NXDOMAIN responses, which can signal domain enumeration or misconfigured malware
+- domains with randomized subdomain structures, a common characteristic of DNS tunneling and C2 communication
 
-The DNS traffic observed in this capture appears to represent normal client behavior generated by standard web services and software updates.
-
-From a defensive security perspective, Wireshark can be used to detect abnormal DNS activity by analyzing query frequency and domain patterns. Tools such as **Wireshark Statistics → DNS** or **Expert Information** can help identify:
-
-- unusually high DNS query rates
-- repeated failed lookups
-- domains with randomized subdomain structures
-
-These patterns may indicate **malware communication, DNS tunneling, or command-and-control infrastructure**.
-
-It is also important to note that the captured DNS traffic was **unencrypted traditional DNS over UDP (port 53)**.  
-Modern systems increasingly use encrypted DNS protocols such as **DNS-over-HTTPS (DoH)** or **DNS-over-TLS (DoT)** to protect DNS queries from interception and monitoring.
-
-However, from a network security monitoring perspective, encrypted DNS can reduce visibility for defenders, making traffic analysis more challenging.
-
-In this lab, traditional unencrypted DNS over UDP (port 53) was observed.
-However, modern systems increasingly use encrypted DNS protocols such as
-DNS-over-HTTPS (DoH, port 443) or DNS-over-TLS (DoT, port 853).
-Monitoring DNS activity is an important part of network security and threat detection.
+It is also worth noting that all DNS traffic captured in this lab used
+**traditional unencrypted DNS over UDP (port 53)**, which allows passive monitoring
+and full query visibility. Modern systems increasingly adopt encrypted alternatives —
+**DNS-over-HTTPS (DoH, port 443)** and **DNS-over-TLS (DoT, port 853)** — which
+protect user privacy by preventing interception. However, this encryption comes at
+a cost to defenders: without endpoint-level DNS logging or dedicated DoH/DoT
+inspection capabilities, encrypted DNS significantly reduces network visibility
+and complicates threat detection.
 
 ---
 
 ## Conclusion
 
-This lab demonstrated how DNS queries and responses can be captured and analyzed using Wireshark.
+This lab demonstrated how DNS traffic can be captured and analyzed using Wireshark
+to gain practical insight into one of the internet's most fundamental protocols.
 
-By inspecting packet structure and DNS record chains, it becomes possible to understand how domain names are resolved and how large services use CDN infrastructure.
+By examining individual packet structure — from the Ethernet frame through IPv6
+and UDP layers down to the DNS payload — it becomes clear how domain names are
+resolved into IP addresses and how large-scale services leverage CDN infrastructure
+such as Akamai to distribute traffic across global edge nodes.
 
-This exercise also highlights why **DNS monitoring is an important component of security monitoring systems** such as SIEM platforms (Splunk, ELK, Sentinel).
-
-DNS logs often provide early indicators of malicious activity, including suspicious domains, command-and-control communication, or data exfiltration attempts.
-
-This exercise demonstrates why DNS monitoring is an important component
-of SOC and SIEM environments (Splunk, ELK, Sentinel), where DNS logs
-can reveal early indicators of command-and-control traffic, DNS tunneling
-or domain generation algorithms (DGA).
+Because DNS is involved in nearly every network connection, it is a high-signal
+source of threat intelligence. DNS logs can expose early indicators of compromise,
+including suspicious or newly registered domains, command-and-control (C2) beaconing,
+DNS tunneling, and domain generation algorithm (DGA) activity used by malware to
+evade static blocklists. This is why DNS monitoring is a core component of modern
+SOC workflows and SIEM platforms such as Splunk, Elastic, and Microsoft Sentinel —
+where DNS telemetry is routinely correlated with endpoint and network data to detect
+lateral movement and data exfiltration attempts.
 
