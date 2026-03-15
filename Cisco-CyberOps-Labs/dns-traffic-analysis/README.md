@@ -59,6 +59,15 @@ This filter displays only DNS packets.
 
 ![DNS Filter](screenshots/03-dns-filter-port53.png)
 
+### Wireshark DNS Filters
+
+| Filter | What it shows | Use case |
+|------|------|------|
+| dns | All DNS traffic (UDP + TCP) | Recommended general DNS analysis filter |
+| udp.port == 53 | DNS over UDP only | Standard DNS queries |
+| dns.flags.response == 0 | DNS queries only | Investigating client requests |
+| dns.flags.rcode != 0 | DNS errors | Troubleshooting NXDOMAIN or failures |
+
 ---
 
 ## DNS Query Packet Structure
@@ -70,15 +79,15 @@ The DNS query packet contains multiple protocol layers:
 - User Datagram Protocol (UDP)
 - Domain Name System (DNS)
 
-- ### DNS Query Packet Fields
+### DNS Query Packet Fields
 
 | Field | Value | Description |
 |------|------|-------------|
 | Transaction ID | 0x0002 | Unique identifier for the DNS query |
+| Query Name | www.cisco.com | Requested domain |
+| Query Type | AAAA (28) | Request for IPv6 address |
 | Flags | 0x0100 | Standard query, recursion desired |
 | Questions | 1 | One DNS question |
-| Query Type | AAAA (28) | Request for IPv6 address |
-| Query Name | www.cisco.com | Requested domain |
 
 
 ![DNS Query Analysis](screenshots/04-dns-query-ethernet.png)
@@ -99,7 +108,9 @@ The DNS response included IPv6 records (**AAAA records**) as well as IPv4 addres
 
 IPv6 is increasingly used by modern web services because it provides a much larger address space and improved routing efficiency compared to IPv4.
 
-In this capture, the client requested an IPv6 address for `www.cisco.com`, which is typical for modern operating systems that prefer IPv6 connectivity when available.
+In this capture, the client requested an IPv6 address for `www.cisco.com`, which is typical for modern operating systems typically send both A and AAAA queries
+(DNS Happy Eyeballs behavior). If a valid AAAA response is received,
+IPv6 connectivity may be used; otherwise IPv4 is used as fallback.
 
 ---
 
@@ -116,7 +127,17 @@ DNS queries are typically transmitted using **UDP port 53**.
 The DNS response reveals a chain of **CNAME records** before resolving to the final address.
 
 Example resolution chain:
+www.cisco.com
+→ CNAME → www.cisco.com.akadns.net
+→ CNAME → wwwds.cisco.com.edgekey.net
+→ CNAME → wwwds.cisco.com.edgekey.net.globalredir.akadns.net
+→ CNAME → e2867.dsca.akamaiedge.net
+→ AAAA → 2a02:26f0:e2:784::b33
+→ AAAA → 2a02:26f0:e2:788::b33
+→ A → 23.32.26.4
 
+This multi-level CNAME chain is typical for Akamai CDN infrastructure,
+which dynamically distributes traffic across edge servers.
 
 This shows that Cisco uses **Akamai CDN infrastructure**.
 
@@ -151,7 +172,7 @@ Key fields observed:
 
 - **Flags:** Standard query response (No error)
 - **Questions:** 1
-- **Answer RRs:** 6
+- **Answer count:** 6 resource records
 - **Authority RRs:** 0
 - **Additional RRs:** 0
 
@@ -189,7 +210,9 @@ Modern systems increasingly use encrypted DNS protocols such as **DNS-over-HTTPS
 
 However, from a network security monitoring perspective, encrypted DNS can reduce visibility for defenders, making traffic analysis more challenging.
 
-
+In this lab, traditional unencrypted DNS over UDP (port 53) was observed.
+However, modern systems increasingly use encrypted DNS protocols such as
+DNS-over-HTTPS (DoH, port 443) or DNS-over-TLS (DoT, port 853).
 Monitoring DNS activity is an important part of network security and threat detection.
 
 ---
@@ -204,4 +227,8 @@ This exercise also highlights why **DNS monitoring is an important component of 
 
 DNS logs often provide early indicators of malicious activity, including suspicious domains, command-and-control communication, or data exfiltration attempts.
 
+This exercise demonstrates why DNS monitoring is an important component
+of SOC and SIEM environments (Splunk, ELK, Sentinel), where DNS logs
+can reveal early indicators of command-and-control traffic, DNS tunneling
+or domain generation algorithms (DGA).
 
