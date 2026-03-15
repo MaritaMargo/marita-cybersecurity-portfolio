@@ -32,6 +32,36 @@ This packet represents the **first step of the TCP three-way handshake**.
 
 The client initiates communication with a SYN packet sent to the destination server.
 
+### TCP Sequence and Acknowledgement Numbers
+
+TCP uses **Sequence Numbers (Seq)** and **Acknowledgement Numbers (Ack)** to guarantee reliable communication.
+
+During the TCP three-way handshake the following values can be observed:
+
+SYN  
+Client → Server  
+Seq = X (Initial Sequence Number)  
+Ack = 0
+
+SYN-ACK  
+Server → Client  
+Seq = Y  
+Ack = X + 1
+
+ACK  
+Client → Server  
+Seq = X + 1  
+Ack = Y + 1
+
+Wireshark displays **relative sequence numbers by default**, which simplifies analysis.  
+This means the first observed SYN packet is shown as **Seq = 0** instead of the actual random Initial Sequence Number.
+
+Sequence and acknowledgement numbers ensure:
+
+- packet ordering
+- reliability
+- detection of missing packets
+
 ![TCP SYN](screenshots/03_tcp_syn_packet_analysis.png)
 
 ---
@@ -76,6 +106,28 @@ These commands are used to authenticate and establish data transfer channels.
 
 ![FTP Protocol](screenshots/06_ftp_protocol_commands.png)
 
+### FTP Security Observation
+
+FTP transmits authentication credentials in **plain text**.
+
+During packet inspection it is possible to observe commands such as:
+
+USER username  
+PASS password
+
+This means that any attacker with network access could capture credentials using packet sniffing.
+
+Security implications:
+
+- credentials can be intercepted
+- attackers could gain unauthorized access
+- FTP is vulnerable to Man-in-the-Middle attacks
+
+For secure environments FTP should be replaced with:
+
+- **SFTP (SSH File Transfer Protocol)**
+- **FTPS (FTP over TLS)**
+
 ---
 
 # Step 7 — Following TCP Stream
@@ -110,7 +162,56 @@ In this capture we observe a **DNS query and response** transmitted using UDP on
 
 UDP is commonly used for DNS because it provides faster communication without the overhead of connection establishment.
 
+### DNS Query and Response Analysis
+
+In the captured packet we can observe a DNS request and response.
+
+Example:
+
+Query:
+google.com
+
+Response:
+A record → 192.178.25.14
+
+DNS operates using **Transaction IDs** which allow the client to match responses with queries.
+
+Important DNS header fields include:
+
+- QR (Query/Response)
+- Opcode
+- AA (Authoritative Answer)
+- RD (Recursion Desired)
+- RA (Recursion Available)
+- RCODE (Response code)
+
+DNS traffic analysis is important because attackers may attempt:
+
+- DNS spoofing
+- DNS cache poisoning
+- malicious domain resolution
+
 ![UDP DNS](screenshots/09_udp_dns_packet_analysis.png)
+
+---
+## Wireshark Display Filters Used
+
+During analysis several Wireshark display filters were used:
+
+tcp.flags.syn == 1 && tcp.flags.ack == 0  
+Shows only initial SYN packets
+
+tcp.flags.fin == 1  
+Shows TCP session termination
+
+ftp  
+Filters FTP protocol traffic
+
+dns  
+Shows DNS queries and responses
+
+tcp.stream eq 4  
+Shows packets belonging to a specific TCP stream
 
 ---
 
@@ -127,3 +228,17 @@ Key observations:
 - Wireshark provides powerful capabilities for analyzing packet headers, protocol behavior, and network communication patterns.
 
 Understanding these patterns is essential for **Security Operations Center (SOC) analysts**, incident responders, and network defenders who investigate suspicious traffic and network anomalies.
+
+---
+
+## Security Analyst Perspective
+
+When analyzing network captures, security analysts look for suspicious patterns such as:
+
+- unusual destination IP addresses
+- high numbers of retransmissions
+- abnormal DNS queries
+- unexpected protocols
+- port scanning behaviour
+
+Identifying these anomalies is essential for detecting potential intrusions or compromised systems.
