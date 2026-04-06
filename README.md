@@ -1,61 +1,81 @@
-# marita-cybersecurity-portfolio
-Structured cybersecurity portfolio including risk assessments, incident analysis, lab projects, and security documentation aligned with NIST and ISO principles.
-# Marita Troksa – Cybersecurity Portfolio
+Priekšskatījums
+Markdown (kopēt)
+# Marita Troksa
+**Cybersecurity Student | SOC Analyst Candidate | Riga, Latvia**
 
-## 👩‍💻 About Me
-Aspiring Cybersecurity / SOC Analyst focused on risk management, incident response, and security operations.
+[LinkedIn](https://linkedin.com/in/marita-troksa)
 
----
+Cybersecurity student specialising in security operations, threat detection and log analysis. Building practical skills through home lab work and multiple industry certifications. Seeking a SOC Analyst internship to apply this knowledge in a real-world environment.
 
-## 📜 Certifications & Courses
-- Google Cybersecurity Professional Certificate
-- ISC2 Certified in Cybersecurity (CC)
-- (Add others here)
-
----
-
-## 🛡️ Risk Management Projects
-- AI Risk Evaluation Assistant (NIST-aligned)
-- Risk Register Development
-- GDPR Incident Analysis Case Study
-
----
-
-## 🚨 Incident Response & Detection
-- Incident Analysis Scenarios
-- Log Investigation Exercises
-- VPN & Remote Access Risk Assessment
-
----
-
-## 🧪 Home Lab & Technical Practice
-- VirtualBox Lab Setup
-- Windows / Linux Security Configuration
-- Basic SIEM / Log Analysis Practice
-
----
-
-## 📂 Documentation & Case Studies
-(Links to detailed project folders will be added here)
-
----
-
-## 🎯 Career Focus
-Entry-level SOC Analyst | Cybersecurity Analyst | Information Security
 ---
 
 ## 🎓 Certifications
 
-- [Cisco Junior Cybersecurity Analyst](certifications/cisco-junior-cybersecurity-analyst/README.md)
-- Google Cybersecurity Professional Certificate
-- Google IT Support Professional Certificate
-- ISC2 Certified in Cybersecurity (CC)
+| Certification | Issuer | Year |
+|---|---|---|
+| CompTIA Security+ | CompTIA | *In progress* |
+| Certified in Cybersecurity (CC) | ISC2 | 2026 |
+| CyberOps Associate | Cisco | 2026 |
+| Security, Compliance & Identity Fundamentals (SC-900) | Microsoft | 2026 |
+| Junior Analyst Pathway | Security Blue Team | 2025 |
+| Cybersecurity Professional Certificate | Google | 2025 |
+| IT Support Professional Certificate | Google | 2023 |
+
+> Certification labs and supporting documentation → [certifications/](./certifications)
 
 ---
 
-## 💻 Practical Projects
+## 🛠 Technical Skills
 
-- [Secure Router Configuration Lab](projects/cisco-secure-router-lab/README.md)
-- [Blue Team – IOC Analysis & Threat Investigation](projects/blue-team-ioc-analysis/README.md)
+`Log analysis` `SIEM concepts` `KQL` `Wireshark` `Active Directory`
+`Kali Linux` `Windows Server 2019` `Threat intelligence` `NIST framework`
 
 ---
+
+## 📁 Projects
+
+### Phishing Email Analysis *(in progress)*
+End-to-end analysis of a phishing email sample — header inspection, SPF/DKIM/DMARC verification, URL reputation checks and IOC extraction. Simulates a real SOC L1 triage workflow.
+
+**Tools:** VirusTotal · URLScan.io · MXToolbox · AbuseIPDB
+
+→ [View project](./projects/phishing-email-analysis)
+
+---
+
+### IOC Analysis & Threat Investigation
+Identification and documentation of indicators of compromise from a simulated threat scenario. Includes threat actor research and structured analyst reporting.
+
+**Topics:** Threat intelligence · IOC extraction · Analyst documentation
+
+→ [View project](./projects/blue-team-ioc-analysis)
+
+---
+
+### Identity & Access Management Lab
+Active Directory lab environment simulating enumeration techniques and defensive response scenarios in a controlled Windows domain.
+
+**Topics:** Active Directory · Windows Server 2019 · IAM · Attack simulation
+
+→ [View project](./identity-access-management-lab)
+
+---
+
+## 📊 Skills by Project
+
+| Project | Skills & Knowledge Gained |
+|---|---|
+| Phishing Email Analysis | Email header analysis · SPF / DKIM / DMARC · URL reputation · IOC extraction · Threat triage |
+| IOC Analysis & Threat Investigation | Threat intelligence · IOC documentation · Threat actor research · Analyst reporting |
+| Identity & Access Management Lab | Active Directory · AD enumeration · Access controls · Defensive response · Windows Server 2019 |
+
+---
+
+## 🎓 Education
+
+**Cybersecurity Technician (EQF Level 4)** — Saldus Technical School *(in progress)*
+
+---
+
+*Languages: Latvian (native) · English (fluent) · Russian (fluent)*
+Kopēt Markdown ↗
