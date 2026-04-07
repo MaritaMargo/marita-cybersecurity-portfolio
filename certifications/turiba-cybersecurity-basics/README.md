@@ -4,7 +4,7 @@
 
 **Issuer:** Biznesa augstskola Turiba  |  **Issued:** 2025  |  **Credits:** 3 ECTS
 
-> 📄 [Certificate](./turiba-cybersecurity-basics-certificate.pdf)
+![Turiba University Certificate](./turiba-cybersecurity-basics-certificate.png)
 
 ---
 
