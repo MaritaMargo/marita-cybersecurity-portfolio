@@ -1,5 +1,5 @@
 ## Microsoft Skills for Jobs – Cloud and Cybersecurity Microdegree
-*Edukamu | **Statuss:** In progress| Level: Intermediate*
+*Edukamu | **Statuss:** In progress | Level: Intermediate*
 
 [Credly Badge](#) <!-- pievieno saiti kad būs -->
 
