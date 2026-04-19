@@ -34,7 +34,7 @@ Cybersecurity student specialising in security operations, threat detection and 
 
 ## 📁 Projects
 
-### Phishing Email Analysis *(in progress)*
+### Phishing Email Analysis
 End-to-end analysis of a phishing email sample — header inspection, SPF/DKIM/DMARC verification, URL reputation checks and IOC extraction. Simulates a real SOC L1 triage workflow.
 
 **Tools:** VirusTotal · URLScan.io · MXToolbox · AbuseIPDB
