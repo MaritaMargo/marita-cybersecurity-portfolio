@@ -1,6 +1,6 @@
 # Security Blue Team – Junior Analyst Pathway
 
-![Security Blue Team Certificate](./security-blue-team-certificate.png)
+![Security Blue Team Certificate](Blue-team-pathway.png)
 
 **Issuer:** Security Blue Team | **Issued:** 2025-11-17 | **Level:** Entry-level
 
