@@ -36,7 +36,7 @@ Microsoft Entra ID P1 edition justification.
 
 Topics: `Azure AD` · `RBAC` · `MFA` · `Conditional Access` · `Least Privilege`
 
-📄 [View Document](identity-access-management-lab/Azure_AD_Project_Fixed.docx)
+📄 [View Document](identity-access-management-lab/Azure_AD_Project.docx)
 
 ---
 
