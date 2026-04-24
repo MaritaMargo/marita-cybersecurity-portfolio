@@ -4,7 +4,6 @@
 
 **Issuer:** Security Blue Team | **Issued:** 2025-11-17 | **Level:** Entry-level
 
-**Certificate ID:** 665621709
 
 ---
 
