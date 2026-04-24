@@ -36,7 +36,7 @@ Microsoft Entra ID P1 edition justification.
 
 Topics: `Azure AD` · `RBAC` · `MFA` · `Conditional Access` · `Least Privilege`
 
-📄 [View Document](identity-access-management-lab/azure-ad-project.docx)
+📄 [View Document](azure-ad-project.docx)
 
 ---
 
@@ -47,4 +47,4 @@ patch management strategy, and layered mitigation controls.
 
 Topics: `Risk Assessment` · `IoT Security` · `Network Segmentation` · `MFA` · `Patch Management`
 
-📄 [View Document](identity-access-management-lab/personal-cybersecurity-plan.docx)
+📄 [View Document](personal-cybersecurity-plan.docx)
