@@ -1,5 +1,5 @@
 # ISC2 – Certified in Cybersecurity (CC)
-
+![ISC2 CC Badge](CC_certificate.png)
 https://www.credly.com/badges/40aedc96-45af-4859-82b1-e081b5e1653a/public_url
 
 **Issuer:** ISC2  |  **Issued:** 2026  |  **Level:** Entry-level
