@@ -144,7 +144,7 @@ Anonymous FTP allows users to access the FTP server without a personal account.
 While sometimes used for public file distribution, it can also introduce security risks.
 
 **Security considerations:**
-- anonymous login may allow unauthorized access
+- anonymous login may allow unauthorised access
 - attackers often scan for FTP servers with anonymous access
 - exposed FTP services may lead to data leakage
 
@@ -233,7 +233,7 @@ DNS traffic analysis is important because attackers may attempt:
 
 ### DNS Response Verification
 
-In the captured DNS response, the domain **google.com** resolves to **192.178.25.14**.
+In the captured DNS response, the domain **google.com** resolves to 192.178.25.14 — verified as belonging to AS15169 (Google LLC)
 
 In real security investigations, analysts must verify whether the returned IP address actually belongs to the expected organization.
 
