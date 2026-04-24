@@ -26,3 +26,25 @@ Completed a 6-course, 12 ECTS microdegree developed by Microsoft and industry pa
 - Multi-course hands-on labs across Azure environments
 - Applied security configurations in identity, network, and data domains
 - Architecture-level security planning across all six courses
+
+## Course Projects
+
+### Identity & Access Management Lab
+Microsoft Entra ID identity architecture for a 6-person development team — defines
+role-based access groups, passwordless MFA, Conditional Access policies, and
+Microsoft Entra ID P1 edition justification.
+
+Topics: `Azure AD` · `RBAC` · `MFA` · `Conditional Access` · `Least Privilege`
+
+📄 [View Document](identity-access-management-lab/Azure_AD_Project_Fixed.docx)
+
+---
+
+### Personal Cybersecurity Plan
+Home network security assessment for a typical user environment — identifies threats
+across 10 device/service categories, proposes a dedicated IoT network segment,
+patch management strategy, and layered mitigation controls.
+
+Topics: `Risk Assessment` · `IoT Security` · `Network Segmentation` · `MFA` · `Patch Management`
+
+📄 [View Document](identity-access-management-lab/Personal_Cybersecurity_Plan_Professional.docx)
