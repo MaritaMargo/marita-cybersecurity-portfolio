@@ -27,4 +27,5 @@ Internationally recognised entry-level cybersecurity certification issued by ISC
 
 ---
 
-> Related practical project → [IOC Analysis & Threat Investigation](../../ioc-analysis)
+>Related practical project → [Phishing Email Analysis](../../projects/phishing-email-analysis)
+
