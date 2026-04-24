@@ -1,41 +1,91 @@
 # Lab 01 – File Integrity & Hash Verification
 
+**Course:** Cisco CyberOps Associate  
+**Tool:** certutil (Windows 11)  
+**Environment:** Windows 11
+
+---
+
 ## Overview
-This lab demonstrates file integrity verification using SHA256 hashing in a Windows environment.  
+
+This lab demonstrates file integrity verification using SHA256 hashing in a Windows environment.
 The objective was to simulate file tampering and detect changes using cryptographic hash comparison.
+
+---
+
 ## Threat Scenario
-An attacker modifies a legitimate file after distribution.  
-The goal is to detect unauthorized changes by comparing the current file hash with a previously stored trusted hash value.
+
+An attacker modifies a legitimate file after distribution.
+The goal is to detect unauthorised changes by comparing the current file hash with a previously stored trusted hash value.
+
+---
+
 ## Environment
+
 - Windows 11
 - Built-in Windows utility: certutil
 - SHA256 hashing algorithm
 
+---
+
 ## Scenario
-A file was created and its SHA256 hash was generated and stored as a reference value.  
+
+A file was created and its SHA256 hash was generated and stored as a reference value.
 After modifying the file content, a new hash was calculated and compared against the original reference hash.
 
+---
+
 ## Steps Performed
+
 1. Created a text file using command line.
 2. Generated SHA256 hash using `certutil`.
-3. Saved the hash output to a `.sha256` file.
+3. Saved the hash output as a reference value.
 4. Modified the original file.
 5. Recalculated SHA256 hash.
 6. Compared hash values to detect integrity violation.
 
+---
+
+## Step 2 — Original Hash Generated
+
+```cmd
+certutil -hashfile testfile.txt SHA256
+```
+
+![Original Hash](screenshots/hash-original.png)
+
+---
+
+## Step 5 — Hash After File Modification
+
+```cmd
+certutil -hashfile testfile.txt SHA256
+```
+
+![Modified Hash](screenshots/hash-modified.png)
+
+---
+
 ## Result
-After modifying the file content, the SHA256 hash value changed completely, demonstrating the avalanche effect.  
+
+After modifying the file content, the SHA256 hash value changed completely, demonstrating the **avalanche effect**.
 The mismatch confirmed that the file integrity was compromised.
 
+---
+
 ## Security Insight
-Hash comparison ensures file integrity but does not guarantee authenticity if both the file and its hash reference are modified by an attacker.  
+
+Hash comparison ensures file integrity but does not guarantee authenticity if both the file and its hash reference are modified by an attacker.
 In real-world environments, digital signatures are used to provide authenticity validation.
+
+---
+
 ## Detection Logic
 
 The integrity validation process is based on comparing a previously trusted SHA256 hash value with a newly calculated hash of the current file.
 
-If the values match → file integrity is preserved.  
-If the values differ → file tampering is detected.
+- If the values match → file integrity is preserved.
+- If the values differ → file tampering is detected.
 
 ---
 
