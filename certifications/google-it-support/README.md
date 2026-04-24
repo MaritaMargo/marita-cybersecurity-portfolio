@@ -1,5 +1,6 @@
 # Google IT Support Professional Certificate
 
+![Google IT Support Badge](google_it_support.png)
 https://www.credly.com/badges/708d47b6-a837-4467-bfe6-3770e3d1cd3e/public_url
 
 **Issuer:** Google / Coursera  |  **Issued:** 2023  |  **Level:** Entry-level
