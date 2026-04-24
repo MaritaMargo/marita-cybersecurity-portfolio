@@ -1,4 +1,4 @@
-# CyberStart — Network Security
+# CyberStart – Nordic-Baltic Cybersecurity Training Program
 
 **Program:** CyberStart Nordic-Baltic Cybersecurity Training Program  
 **Co-funded by:** European Union / Interreg Central Baltic Programme  
@@ -20,7 +20,7 @@ combining theory with hands-on practical labs.
 ## Course Modules
 
 1. Intro to Cybersecurity & Digital Fundamentals
-2. **Network Security** ← this module
+2. Network Security
 3. Cryptography, Authentication & IAM
 4. Application & Web Security
 5. Security Operations & Incident Response
@@ -63,4 +63,4 @@ and full security hardening using Cisco Packet Tracer.
 
 ---
 
-*Certificate will be added upon program completion (May 2026).*
+*Certificate will be added upon program completion (2026).*
