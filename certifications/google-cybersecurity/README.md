@@ -1,5 +1,6 @@
 # Google Cybersecurity Professional Certificate
 
+![Google Cybersecurity Badge](google-cybersecurity.png)
 https://www.credly.com/badges/754d58e3-3df9-45dd-8850-87be30793e7a/public_url
 
 **Issuer:** Google / Coursera  |  **Issued:** 2025  |  **Level:** Entry-level
