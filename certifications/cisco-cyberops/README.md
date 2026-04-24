@@ -1,5 +1,6 @@
 # Cisco Networking Academy – CyberOps Associate
 
+![Cisco CyberOps Associate Badge](Cyberops.png)
 https://www.credly.com/badges/4f2553b4-fcca-4eb8-aa6a-081846c92520/public_url
 
 **Issuer:** Cisco Networking Academy  |  **Issued:** 2026  |  **Level:** Associate
@@ -30,7 +31,7 @@ Completed Cisco CyberOps Associate training focused on Security Operations Cente
 
 ## Practical Labs
 
-All labs completed as part of this course are documented in the Cisco CyberOps Labs folder.
+All labs completed as part of this course are documented in the Cisco CyberOps Labs repository.
 
 | Lab | Topic | Link |
 |---|---|---|
