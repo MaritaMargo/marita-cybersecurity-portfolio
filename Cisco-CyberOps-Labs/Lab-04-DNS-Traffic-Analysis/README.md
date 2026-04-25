@@ -51,8 +51,6 @@ appear in the packet capture.
 
 Initially the following Wireshark display filter was used:
 
-
-
 ![Filtering DNS Packets](screenshots/03-dns-filter-port53.png)
 
 
