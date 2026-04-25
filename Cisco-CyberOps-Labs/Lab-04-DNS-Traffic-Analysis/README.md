@@ -53,7 +53,7 @@ Initially the following Wireshark display filter was used:
 
 
 
-![Wireshark Interface](screenshots/01-wireshark-interface.png)
+![Filtering DNS Packets](screenshots/03-dns-filter-port53.png)
 
 
 ```
@@ -75,7 +75,8 @@ transfers or large DNS responses).
 For this lab, `udp.port == 53` was sufficient because the captured traffic consisted
 of standard DNS queries and responses.
 
-![DNS Filter port53](screenshots/03-dns-filter-port53.png)
+
+![DNS Filter](screenshots/03-dns-filter-port53.png)
 
 ---
 
@@ -150,15 +151,6 @@ DNS packets makes the reliability overhead of TCP unnecessary.
 
 The DNS response reveals a chain of **CNAME records** before resolving to the final address.
 
-Example resolution chain observed in this capture:
-The `dns` filter displays all DNS traffic regardless of the transport protocol,
-including DNS over **UDP** as well as DNS over **TCP** (which can occur during
-zone transfers or large DNS responses).
-
-For this lab, `udp.port == 53` was sufficient because the captured traffic
-consisted of standard DNS queries and responses.
-
-![DNS Filter](screenshots/03-dns-filter-port53.png)
 www.cisco.com
   → CNAME → www.cisco.com.akadns.net
   → CNAME → wwds.cisco.com.edgekey.net
