@@ -159,7 +159,7 @@ www.cisco.com
   → AAAA  → 2a02:26f0:e2:784::b33
   → AAAA  → 2a02:26f0:e2:788::b33
   → A     → 23.32.26.4
-```
+
 
 The final records may vary depending on resolver, time, and geographic location.
 This multi-level CNAME chain is typical of **Akamai CDN infrastructure**, which
