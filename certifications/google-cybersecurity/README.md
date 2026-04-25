@@ -41,7 +41,7 @@ configuration, RBAC implementation, and legacy cryptography hardening.
 **Topics:** NIST SP 800-30 · Active Directory · Risk assessment · 
 Remediation · Access controls · Group Policy
 
-[View PDF](./vulnerability-assessment-report-ad-lab.pdf)
+> 📄 [View PDF](./vulnerability-assessment-report-ad-lab.pdf)
 ---
 
 ### Incident Handler's Journal
