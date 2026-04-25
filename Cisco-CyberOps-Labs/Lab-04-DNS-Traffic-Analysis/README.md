@@ -76,8 +76,6 @@ For this lab, `udp.port == 53` was sufficient because the captured traffic consi
 of standard DNS queries and responses.
 
 
-![DNS Filter](screenshots/03-dns-filter-port53.png)
-
 ---
 
 ## Wireshark DNS Filters
