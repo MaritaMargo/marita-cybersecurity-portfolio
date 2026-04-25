@@ -30,13 +30,18 @@ Comprehensive cybersecurity training covering security operations, risk manageme
 
 ## Course Projects
 
-### Vulnerability Assessment Report
-Risk assessment of a MySQL database server using NIST SP 800-30 Rev. 1. Identifies threat sources, likelihood and severity, and defines a remediation strategy including MFA, role-based access controls and TLS encryption.
+### Vulnerability Assessment Report — Active Directory Lab
 
-**Topics:** NIST SP 800-30 · Risk assessment · Remediation · Access controls
+Risk assessment of a Windows Server 2019 Active Directory Domain Controller 
+using NIST SP 800-30 Rev. 1. Identifies five threat scenarios including brute 
+force attacks, privilege escalation, and lateral movement. Defines a 
+remediation strategy covering GPO password policies, account lockout 
+configuration, RBAC implementation, and legacy cryptography hardening.
 
-> 📄 [View PDF](./vulnerability-assessment-report.pdf)
+**Topics:** NIST SP 800-30 · Active Directory · Risk assessment · 
+Remediation · Access controls · Group Policy
 
+[View PDF](link-to-your-pdf)
 ---
 
 ### Incident Handler's Journal
