@@ -5,7 +5,7 @@
 This lab demonstrates symmetric encryption and decryption using OpenSSL with the AES-256-CBC algorithm. The objective was to understand how confidentiality is implemented using password-based encryption.
 
 **Course:** Cisco CyberOps Associate  
-**Environment:** Parrot OS (isolated lab environment) · OpenSSL 3.x · AES-256-CBC cipher
+**Environment:** Kali Linux (isolated lab environment) · OpenSSL 3.x · AES-256-CBC cipher
 
 ---
 
