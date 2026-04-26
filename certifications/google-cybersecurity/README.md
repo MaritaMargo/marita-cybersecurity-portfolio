@@ -64,6 +64,6 @@ Hardening recommendations for an organisation with identified authentication and
 
 **Topics:** System hardening · MFA · Password policy · Firewall management · Risk mitigation
 
-> 📄 [View PDF](./Security-Risk-Assessment-Report_Final.pdf)
+> 📄 [View PDF](./Security_Risk_Assessment_Report_FINAL.pdf)
 
 
