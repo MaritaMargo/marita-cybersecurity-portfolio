@@ -57,7 +57,7 @@ Before any technical analysis, the following were immediately suspicious:
 
 **Tool:** mxtoolbox.com/EmailHeaders
 
-![MXToolbox Header Analysis](./screenshots/mxtoolbox-results.png)
+![MXToolbox Header Analysis](./mxtoolbox-results.png)
 
 ### Authentication Results
 
@@ -91,7 +91,7 @@ Before any technical analysis, the following were immediately suspicious:
 **Tool:** abuseipdb.com  
 **IP analysed:** 209.85.161.67
 
-![AbuseIPDB IP Lookup](./screenshots/abuseipdb-reports.png)
+![AbuseIPDB IP Lookup](./abuseipdb-reports.png)
 
 | Field | Value |
 |---|---|
@@ -114,7 +114,7 @@ Before any technical analysis, the following were immediately suspicious:
 **Tool:** virustotal.com  
 **IP analysed:** 209.85.161.67
 
-![VirusTotal IP Lookup](./screenshots/virustotal-ip-lookup.png)
+![VirusTotal IP Lookup](./virustotal-ip-lookup.png)
 
 **Result:** 0/94 — Clean
 
@@ -127,7 +127,7 @@ Before any technical analysis, the following were immediately suspicious:
 **Tool:** urlscan.io  
 **Search:** gmail.com as sending infrastructure
 
-![URLScan gmail.com search](./screenshots/urlscan-gmail-search.png)
+![URLScan gmail.com search](./urlscan-gmail-search.png)
 
 Search for `gmail.com` confirms active scanning activity across multiple domains using Gmail as sending infrastructure. URLScan is most effective when phishing URLs are present in the email body — in this case it validates gmail.com as a known platform frequently appearing in security scans and phishing campaigns.
 
