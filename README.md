@@ -1,11 +1,39 @@
-Priekšskatījums
-Markdown (kopēt)
 # Marita Troksa
-**Cybersecurity Student | SOC Analyst Candidate | Riga, Latvia**
+### Cybersecurity Student | SOC Analyst Candidate | Riga, Latvia
 
 [LinkedIn](https://linkedin.com/in/marita-troksa)
 
-Cybersecurity student specialising in security operations, threat detection and log analysis. Building practical skills through home lab work and multiple industry certifications. Seeking a SOC Analyst internship to apply this knowledge in a real-world environment.
+Cybersecurity student specialising in security operations and threat detection. Hands-on experience with SOC L1 triage workflows, email threat analysis, vulnerability assessment and IOC extraction. Actively building practical skills through real-world lab work, CTF challenges on Hack The Box, and structured certification study targeting a Junior SOC Analyst role.
+
+---
+
+## 📁 Projects
+
+### Phishing Email Analysis — SOC L1 Triage Workflow
+End-to-end analysis of a real phishing email received in a personal inbox. Simulates a SOC L1 analyst triage workflow — sender identity verification, SPF/DKIM/DMARC authentication checks, email hop chain analysis, IP reputation lookup and IOC extraction with final analyst verdict.
+
+**Tools:** MXToolbox · AbuseIPDB · VirusTotal · URLScan.io  
+**Topics:** Email header analysis · Social engineering recognition · Threat triage · IOC extraction · Analyst reporting
+
+→ [View project](./projects/phishing-email-analysis)
+
+---
+
+### Vulnerability Assessment — DataBridge IT Services
+Simulated CVE vulnerability assessment for a fictional IT services company with 48 employees and internet-facing infrastructure. Covers applicability assessment, CVSS v3.1 risk scoring, risk matrix analysis, prioritised remediation planning and executive reporting — including one actively exploited vulnerability confirmed in CISA KEV.
+
+**Tools:** NVD · CISA KEV · CVSS v3.1 Calculator  
+**Topics:** CVE analysis · CVSS v3.1 scoring · Risk matrix · Patch management · Defence in depth · Network segmentation
+
+→ [View project](./projects/vulnerability-assessment-databridge)
+
+---
+
+## 🛠 Technical Skills
+
+`Email header analysis` `SPF/DKIM/DMARC` `IOC extraction` `CVSS v3.1` `Vulnerability assessment`  
+`Log analysis` `SIEM concepts` `KQL` `Wireshark` `Active Directory` `Windows Server 2019`  
+`Kali Linux` `Threat intelligence` `NIST framework` `MXToolbox` `AbuseIPDB` `VirusTotal`
 
 ---
 
@@ -13,61 +41,13 @@ Cybersecurity student specialising in security operations, threat detection and 
 
 | Certification | Issuer | Year |
 |---|---|---|
-| CompTIA Security+ | CompTIA | *In progress* |
 | Certified in Cybersecurity (CC) | ISC2 | 2026 |
 | CyberOps Associate | Cisco | 2026 |
-| Security, Compliance & Identity Fundamentals (SC-900) | Microsoft | 2026 |
 | Junior Analyst Pathway | Security Blue Team | 2025 |
 | Cybersecurity Professional Certificate | Google | 2025 |
 | IT Support Professional Certificate | Google | 2023 |
 
-> Certification labs and supporting documentation → [certifications/](./certifications)
-
----
-
-## 🛠 Technical Skills
-
-`Log analysis` `SIEM concepts` `KQL` `Wireshark` `Active Directory`
-`Kali Linux` `Windows Server 2019` `Threat intelligence` `NIST framework`
-
----
-
-## 📁 Projects
-
-### Phishing Email Analysis
-End-to-end analysis of a phishing email sample — header inspection, SPF/DKIM/DMARC verification, URL reputation checks and IOC extraction. Simulates a real SOC L1 triage workflow.
-
-**Tools:** VirusTotal · URLScan.io · MXToolbox · AbuseIPDB
-
-→ [View project](./projects/phishing-email-analysis)
-
----
-
-### IOC Analysis & Threat Investigation
-Identification and documentation of indicators of compromise from a simulated threat scenario. Includes threat actor research and structured analyst reporting.
-
-**Topics:** Threat intelligence · IOC extraction · Analyst documentation
-
-→ [View project](./projects/blue-team-ioc-analysis)
-
----
-
-### Identity & Access Management Lab
-Active Directory lab environment simulating enumeration techniques and defensive response scenarios in a controlled Windows domain.
-
-**Topics:** Active Directory · Windows Server 2019 · IAM · Attack simulation
-
-→ [View project](./identity-access-management-lab)
-
----
-
-## 📊 Skills by Project
-
-| Project | Skills & Knowledge Gained |
-|---|---|
-| Phishing Email Analysis | Email header analysis · SPF / DKIM / DMARC · URL reputation · IOC extraction · Threat triage |
-| IOC Analysis & Threat Investigation | Threat intelligence · IOC documentation · Threat actor research · Analyst reporting |
-| Identity & Access Management Lab | Active Directory · AD enumeration · Access controls · Defensive response · Windows Server 2019 |
+→ Certification labs and supporting documentation: [certifications/](./certifications)
 
 ---
 
@@ -78,4 +58,3 @@ Active Directory lab environment simulating enumeration techniques and defensive
 ---
 
 *Languages: Latvian (native) · English (fluent) · Russian (fluent)*
-Kopēt Markdown ↗
