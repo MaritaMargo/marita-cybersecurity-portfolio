@@ -44,12 +44,18 @@ Remediation · Access controls · Group Policy
 > 📄 [View PDF](./vulnerability-assessment-report-ad-lab.pdf)
 ---
 
-### Incident Handler's Journal
-Documented incident response entries following the NIST incident response lifecycle — preparation, detection, containment, eradication and lessons learned.
+### Internal Security Audit — Botium Toys
 
-**Topics:** Incident response · NIST lifecycle · SOC documentation
+Internal security audit of a fictional U.S. retail company conducted 
+using NIST CSF. Evaluates 14 security controls and assesses compliance 
+against PCI DSS, GDPR, and SOC 1/2 standards. Identifies critical gaps 
+including missing encryption, lack of least privilege, no IDS, and 
+absent disaster recovery plans. Risk score: 8/10.
 
-> 📄 [View PDF](./incident-handlers-journal.pdf)
+**Topics:** Internal audit · PCI DSS · GDPR · SOC · Controls 
+assessment · Compliance · Risk scoring
+
+> 📄 [View PDF](./Boltium_Toys_internal_Audit_Report.pdf)
 
 ---
 
