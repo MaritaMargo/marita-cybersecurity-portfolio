@@ -50,16 +50,6 @@ combining theory with hands-on practical labs.
 - Network topology design from requirements
 - Security policy implementation and testing
 
----
-
-## Course Project
-
-**Home Lab 1 — Enterprise Network Security** — a fully simulated 
-enterprise network across two buildings, designed from a realistic 
-business brief. Includes VLAN segmentation, ACL policies, redundancy, 
-and full security hardening using Cisco Packet Tracer.
-
-[Lab 01 — Enterprise Network Security → View Project](./Lab-01-Enterprise-Network/)
 
 ---
 
