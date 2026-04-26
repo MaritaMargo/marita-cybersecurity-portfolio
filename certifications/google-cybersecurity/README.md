@@ -55,7 +55,7 @@ absent disaster recovery plans. Risk score: 8/10.
 **Topics:** Internal audit · PCI DSS · GDPR · SOC · Controls 
 assessment · Compliance · Risk scoring
 
-> 📄 [View PDF](./Boltium_Toys_internal_Audit_Report.pdf)
+> 📄 [View PDF](./Botium_Toys_Internal_Audit_Report.pdf)
 
 ---
 
