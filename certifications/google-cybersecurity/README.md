@@ -59,9 +59,11 @@ assessment · Compliance · Risk scoring
 
 ---
 
-### Access Control Worksheet
-Analysis of an unauthorized access incident — identifies authentication issues, expired contractor accounts and recommends MFA, account expiry policies and least privilege access.
+### Security Risk Assessment Report
+Hardening recommendations for an organisation with identified authentication and network vulnerabilities. Analyses three controls — MFA, password policies, and firewall maintenance — and justifies their implementation against brute force, credential abuse, and DoS threats.
 
-**Topics:** Access control · IAM · MFA · Least privilege
+**Topics:** System hardening · MFA · Password policy · Firewall management · Risk mitigation
 
-> 📄 [View PDF](./access-control-worksheet.pdf)
+> 📄 [View PDF](./Security-Risk-Assessment-Report_Final.pdf)
+
+
